@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Використання оператора IF</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Знайти найбільше число</h1>
+    <button id="changeButton" onclick="changeNumbers()">Змінити числа</button>
+    <p id="result"></p>
+
+    <script>
+        let a, b, c;
+
+        function promptNumbers() {
+            const inputA = prompt("Введіть перше число:");
+            const inputB = prompt("Введіть друге число:");
+            const inputC = prompt("Введіть третє число:");
+
+            a = inputA ? parseFloat(inputA) : 0; // Приймаємо 0, якщо нічого не введено
+            b = inputB ? parseFloat(inputB) : 0; // Приймаємо 0, якщо нічого не введено
+            c = inputC ? parseFloat(inputC) : 0; // Приймаємо 0, якщо нічого не введено
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                alert("Будь ласка, введіть числові значення.");
+                promptNumbers(); // Повторюємо запит, якщо введено нечислові значення
+            } else {
+                displayResult();
+            }
+        }
+
+        function displayResult() {
+            let max;
+
+            if (a === 0 && b === 0 && c === 0) {
+                document.getElementById('result').innerText = "Помилка: Не введено жодного числа.";
+                return;
+            }
+
+            if (a > b && a > c) {
+                max = a;
+            } else if (b > c) {
+                max = b;
+            } else {
+                max = c;
+            }
+
+            document.getElementById('result').innerText = "Найбільше серед трьох чисел - " + max;
+        }
+
+        function changeNumbers() {
+            promptNumbers();
+        }
+
+        // Відкриваємо діалогове вікно при завантаженні сторінки
+        promptNumbers();
+    </script>
+</body>
+</html>
